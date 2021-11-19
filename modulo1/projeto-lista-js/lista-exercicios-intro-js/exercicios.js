@@ -69,11 +69,7 @@ console.log (listaDeCores)
 // EXERCÍCIO 06
 function retornaStringEmMaiuscula(string) {
   // implemente sua lógica aqui
-let frase = "oi"
-let novaFrase = frase.toUpperCase ()
-
-console.log (novaFrase)
-
+return ((string).toUpperCase())
 }
 
 // EXERCÍCIO 07
@@ -124,17 +120,38 @@ return string1 === string2
 // EXERCÍCIO 13
 function checaRenovacaoRG() {
   // implemente sua lógica aqui
+const esseAno = Number(prompt("Qual o ano atual?"))
+const anoNasceu = Number(prompt("Qual ano nasceu?"))
+const anoEmissaoId = Number(prompt("Qual ano foi emitida sua carteira de identidade?"))
 
+let idade = esseAno - anoNasceu
+let validade = esseAno - anoEmissaoId
+
+if (((idade <= 20 && validade >= 5) || (idade > 20 && idade <= 50 && validade >= 10) || (idade > 50 && validade >= 15))) {
+  console.log (true)
+} else {
+  console.log (false)
+}
 }
 
 // EXERCÍCIO 14
 function checaAnoBissexto(ano) {
   // implemente sua lógica aqui
+ const cond1 = (ano % 400 == 0) 
+ const cond2 =  (ano % 4 == 0)
+ const cond3 = (ano % 100 != 0)
 
+ return cond1|| cond2 && cond3
 }
 
 // EXERCÍCIO 15
 function checaValidadeInscricaoLabenu() {
   // implemente sua lógica aqui
+const maiorDeidade = prompt("Você tem mais de 18 anos?")
+const ensinoMedio = prompt("Você possui ensino médio completo?")
+const disponHorario = prompt("Você possui disponibilidade exclusiva durante os horários do curso?")
 
+const inscricaovalda = (maiorDeidade === "sim" && ensinoMedio === "sim" && disponHorario === "sim")
+
+console.log (inscricaovalda)
 }
