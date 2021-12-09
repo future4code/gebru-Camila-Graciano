@@ -38,16 +38,20 @@ function retornaMaiorNumero(array) {
   return maior
 }
 
-
-
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
-
+  let maiorNumero = Math.max(num1,num2)
+  let menorNumero = Math.min(num1,num2)
+  let objeto = {
+    maiorNumero : maiorNumero, maiorDivisivelPorMenor: maiorNumero%menorNumero === 0, 
+    diferenca : maiorNumero - menorNumero
+  }
+  return objeto
 }
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-   
+
 }
 
 // EXERCÍCIO 09
