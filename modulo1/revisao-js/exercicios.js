@@ -21,16 +21,15 @@ function retornaArrayOrdenado(array) {
 
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
-    let numerosPares = array.filter(pares => (pares %2) === 0)
+    let numerosPares = array.filter(pares => (pares%2) === 0)
     return numerosPares
 }
 
 
-
-
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
- 
+  let numerosPares = array.filter(pares => (pares%2) === 0).map(pares**2)
+  return numerosPares
 }
 
 // EXERCÍCIO 06
