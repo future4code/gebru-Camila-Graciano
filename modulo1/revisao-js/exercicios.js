@@ -62,7 +62,14 @@ return primeirosPares
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
-
+if (ladoA === ladoB && ladoA === ladoC){
+  console.log ("Escaleno");
+if (ladoA === ladoB || ladoA === ladoC || ladoB === ladoC) {
+  console.log ("Isósceles")
+} else {
+  console.log("Escaleno")
+}
+}
 }
 
 // EXERCÍCIO 10
