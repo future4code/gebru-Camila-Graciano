@@ -134,3 +134,4 @@ function retornaArrayOrdenadoPorData(consultas) {
     consultas.sort((a, b) => Date.parse(dataEN(a.dataDaConsulta)) - Date.parse(dataEN(b.dataDaConsulta)))
     return consultas
   }
+  
