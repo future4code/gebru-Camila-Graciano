@@ -100,20 +100,15 @@ function retornaPessoaAnonimizada(pessoa) {
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-   let pessoasAutorizadas = pessoas.filter(pessoa => {
-    if (altura >= 1.5 && idade > 14 && idade < 60) {
-    return pessoa
-    }
-   })
+   let pessoasAutorizadas = pessoas.filter(pessoa => (pessoa.altura >= 1.5 && pessoa.idade > 14 && pessoa.idade < 60))
+    return pesssoasAutorizadas
+  
 }
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-  let pessoasNaoAutorizadas = pessoas.filter(pessoa => {
-  if (altura <  1.5 || idade  <= 14 || idade >= 60) {
-  return pessoa
-}
-  })
+  let pessoasNaoAutorizadas = pessoas.filter(pessoa => (pessoa.altura <  1.5 || pessoa.idade  <= 14 || pessoa.idade >= 60)) 
+  return pessoasNaoAutorizadas
 }
 
 
@@ -130,7 +125,7 @@ function retornaContasComSaldoAtualizado(contas) {
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+  return consultas.sort((a, b) => a.nome.localeCompare(b.nome)) 
 }
 
 // EXERCÍCIO 15B
