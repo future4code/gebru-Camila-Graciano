@@ -129,6 +129,8 @@ function retornaArrayOrdenadoAlfabeticamente(consultas) {
 }
 
 // EXERCÍCIO 15B
-function retornaArrayOrdenadoPorData(consultas) {
-   
-}
+function retornaArrayOrdenadoPorData(consultas) {    
+    const converteData = data => data.split('/').reverse().join('-')
+    consultas.sort((a, b) => Date.parse(dataEN(a.dataDaConsulta)) - Date.parse(dataEN(b.dataDaConsulta)))
+    return consultas
+  }
