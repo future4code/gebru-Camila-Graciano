@@ -1,0 +1,9 @@
+Exercícios de fixação do conhecimento
+
+Os 7 passos fundamentais para resolução de problemas podem ser resumidos em:
+Leitura atenta do enunciado destacando as informações de maior relevâcia, 
+separando as palavras chave verbos e condições, entender quais serão as entradas  e saídas,
+traduzir em um esquema, após comecar a criar o código, testá-lo e revisá=lo, 
+renomeando veriáveis e funções, separando os elementos.
+Dessa forma, fica mais fácil de vizualizar o que prcisará ser feito, você consegue otimizar o código já vislumbrando
+eventuais entrada e saídas, bem como as condições. 
