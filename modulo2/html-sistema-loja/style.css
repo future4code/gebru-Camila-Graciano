@@ -1,0 +1,39 @@
+title {
+    color:darkred;
+    font-style: italic;
+    font-family:Arial Narrow Bold;
+    font-weight: 800;
+    font-size:x-large;
+}
+
+h1{
+    color:darkred;
+    font-style: italic;
+    font-family:Arial Narrow Bold;
+    font-weight: 400;
+}
+
+h2{
+    color:darkred;
+    font-style: italic;
+    font-family:Arial Narrow Bold;  
+    font-weight: 400;
+    font-size:x-large;
+}
+
+p{
+    color:darkred;
+    font-style: italic;
+    font-family:Arial Narrow Bold;
+}
+
+body{
+    background-image: url(Img/história-do-livro-800x500.jpg);
+    background-repeat: repeat;
+    background-size: 130%;
+}
+
+button{
+    color: white;
+    background-color:darksalmon;
+}
