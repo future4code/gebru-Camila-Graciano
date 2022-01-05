@@ -67,8 +67,6 @@ button:active {
 
 button:hover{
     background-color: #cfb12b;
-
-    
 }
 /** 
   *
@@ -119,6 +117,10 @@ table {
     text-align: center;
 }
 
+div>table {
+  margin: 0 auto
+}
+
 td button {
     background-color: #fadf63;
     width: 150px;
@@ -133,7 +135,6 @@ td button {
     height: 100px;
 }
 
-
 #back-button {
     background-color: white;
     width: 100px;
@@ -142,6 +143,9 @@ td button {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+}
+
+.container-do-voltar {
     text-align: center;
 }
 
