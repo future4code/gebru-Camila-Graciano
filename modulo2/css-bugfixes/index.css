@@ -22,7 +22,7 @@ input {
 }
 
 button:focus {
-    color: white;
+    color: white;   
 }
 
 img {
@@ -61,7 +61,15 @@ div> div img {
     height: 15px;
 }
 
+button:active {
+    color: white;
+}
 
+button:hover{
+    background-color: #cfb12b;
+
+    
+}
 /** 
   *
   *  ESTILOS HOME 
