@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div>
-      <div class="tela-inteira">
+      <div className="tela-inteira">
         <header>
             <h1>Future Tube</h1>
             <input type="text" placeholder="Busca" id="campoDeBusca" />
