@@ -56,7 +56,7 @@ function App() {
                     <img src="https://picsum.photos/400/400?a=7 " alt="" />
                     <h4>{titulo}</h4>
                 </div>
-                <div clasclassNames="box-pagina-principal media8" onClick={reproduzVideo}>
+                <div className="box-pagina-principal media8" onClick={reproduzVideo}>
                     <img src="https://picsum.photos/400/400?a=8 " alt="" />
                     <h4>{titulo}</h4>
                 </div>
