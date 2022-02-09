@@ -7,8 +7,12 @@ import Etapa3 from './components/Etapa2'
 import Final from './components/Final'
 
 const Button = styled.button`
-margin: auto;
+display: flex;
+margin: 0 auto;
 text-align: center;
+align-items: center;
+margin-bottom: 2%;
+margin-top: 1%;
 `
 class App extends React.Component {
 
