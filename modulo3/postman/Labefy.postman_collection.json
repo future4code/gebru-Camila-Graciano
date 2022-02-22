@@ -1,0 +1,1427 @@
+{
+	"info": {
+		"_postman_id": "43d9fa7b-4607-41c3-b21f-4c14846834cf",
+		"name": "Labefy",
+		"description": "## Descrição\n</br>Esta API gerencia playlists e músicas.\n```\n\tFeito pela Labenu. Todos os direitos reservados\n```\n\n## Instruções gerais.\n\n**Autenticação**\n\nToda requisição deve ter uma identificação de quem está fazendo a requisição. Ela deve ser enviada por meio do header `Authorization`, da seguinte forma:\n\n`Authorization: \"nome-sobrenome-turma\"`\n\nPor exemplo, se meu nome é Bob Marley e eu sou da turma Newton, o header deve ser:\n\n`Authorization: \"bob-marley-newton\"`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAllPlaylists",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				},
+				"description": "### Descrição:\nEsta requisição serve para ver o `id` e o `name` de todas as suas playlists.\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n### Output:\n**Body**\n<br/>`quantity`: quantitdade de playlists\n<br/>`list`: lista com as playlists\n<br/> `id`: id de cada playlist\n<br/> `name`: nome de cada playlist\n\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"list\": [\n            {\n                \"id\": \"string\",\n                \"name\": \"string\"\n            }\n        ]\n    }\n}\n```\n"
+			},
+			"response": []
+		},
+		{
+			"name": "searchPlaylist",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name=string",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "string"
+						}
+					]
+				},
+				"description": "### Descrição:\nEssa requisição parmite pesquisar por uma playlist, usando o nome dela ou parte dele.\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Query String**\n<br/> `name`: nome da playlist ou parte dele (obrigatório)\n```\n\tname:\"string\" \n```\n\n### Output:\n**Body**\n<br/> `quantity`: quantidade de playlists encontradas\n<br/> `list`: array com as playlists\n<br/> `id`: id de cada playlist\n<br/> `name`: nome de cada playlist\n```\n{\n    \"result\": {\n    \t\"quantity\": \"number\", \n        \"list\": [\n            {\n                \"id\": \"string\", \n                \"name\": \"string\" \n            }\n        ]\n    }\n}\n```\n\n\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "getPlaylistTracks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "027f1eaf-3d07-46cf-aab3-7064d5935d80"
+						}
+					]
+				},
+				"description": "### Descrição:\nEsta requisição permite verificar quais músicas estão em uma determinada playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n### Output:\n**Body**\n<br/> `quantity`: quantidade de músicas da playlist\n<br/> `tracks`: array com as informações das músicas\n<br/> `id`: id de cada música\n<br/> `name`: nome de cada música\n<br/> `artist`: cantor ou band da música\n<br/>`url`: URL da música para ser tocada\n```\n{\n    \"result\": {\n        \"quantity\": \"number\",\n        \"tracks\": [ \n            {\n                \"id\": \"string\", \n                \"name\": \"string\", \n                \"artist\": \"string\",\n                \"url\": \"string\"\n            }\n        ]\n    }\n}\n```\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "createPlaylist",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"string\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				},
+				"description": "### Descrição:\nEssa requisição cria uma nova playlist. \n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n**Body**\n<br/>`name`: nome da playlist (obrigatório)\n```\n{\n\t\"name\": \"string\" \n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "addTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"string\",\n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "027f1eaf-3d07-46cf-aab3-7064d5935d80"
+						}
+					]
+				},
+				"description": "### Descrição:\nEssa requisição adiciona uma música a uma playlist existente\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n**Body**\n<br/>`name`: nome da música (obrigatório)\n<br/>`artist`: cantor ou banda da música (obrigatório)\n<br/>`url`: URL da música para ser tocada (obrigatório)\n```\n{\n\t\"name\": \"string\", \n\t\"artist\": \"string\",\n\t\"url\": \"string\"\n}\n```\n\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "deletePlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "247e3159-ac9f-491e-8eac-3ee4027681d8"
+						}
+					]
+				},
+				"description": "### Descrição:\nEsta requisição serve para deletar alguma playlist.\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "removeTrackFromPlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks/:trackId",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks",
+						":trackId"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": ""
+						},
+						{
+							"key": "trackId",
+							"value": ""
+						}
+					]
+				},
+				"description": "### Descrição:\nEsta requisição serve para deletar alguma música de alguma playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Params**\n<br/>`playlistId`: id da playlist (obrigatório)\n<br/>`trackId`: id da música (obrigatório)\n"
+			},
+			"response": []
+		},
+		{
+			"name": "addTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Greek Tragedy\", \r\n    \"artist\": \"The Wombats\",\r\n    \"url\": \"https://open.spotify.com/track/1tTV7mRV9uB2Nr9VcwkuFX?si=c9a8d70ce7ca4287\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "b8d82240-3f09-4cb0-9cf7-a58467cde064"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPlaylistTracks",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "b8d82240-3f09-4cb0-9cf7-a58467cde064"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchPlaylist",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name=indie",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "indie"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Space Song\", \r\n    \"artist\": \"Beach House\",\r\n    \"url\": \"https://open.spotify.com/track/1ujxjsoNvh4XgS2fUNwkZ2?si=e77e7cedc11a442f\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "b8d82240-3f09-4cb0-9cf7-a58467cde064"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPlaylistTracks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "b8d82240-3f09-4cb0-9cf7-a58467cde064"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Dance, Baby\", \r\n    \"artist\": \"Boy pablo\",\r\n    \"url\": \"https://open.spotify.com/track/5EV4bGHxVN0kHpcAFvgnTt?si=7549f46f95064931\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "b8d82240-3f09-4cb0-9cf7-a58467cde064"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPlaylistTracks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "b8d82240-3f09-4cb0-9cf7-a58467cde064"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "removeTrackFromPlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks/:trackId",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks",
+						":trackId"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "b8d82240-3f09-4cb0-9cf7-a58467cde064"
+						},
+						{
+							"key": "trackId",
+							"value": "8d507af8-4611-49c9-b8d0-75dddbf7d4b2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Wake up\", \r\n    \"artist\": \"Run River North\",\r\n    \"url\": \"https://open.spotify.com/track/4A8UwZaRbpX4GYnQGvDkPU?si=03fe1a6e23274ec6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "b8d82240-3f09-4cb0-9cf7-a58467cde064"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Alright\", \r\n    \"artist\": \"SuperGrass\",\r\n    \"url\": \"https://open.spotify.com/track/5xC8uOesnn0udeXAYlAnoY?si=c0c8a87111164212\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "b8d82240-3f09-4cb0-9cf7-a58467cde064"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPlaylistTracks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "b8d82240-3f09-4cb0-9cf7-a58467cde064"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "b8d82240-3f09-4cb0-9cf7-a58467cde064"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "bb977c96-3294-4807-9de7-f30d4d7d6ecb"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "a1e607af-8336-4ed7-b64f-7f30034caade"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPlaylistTracks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Pagode\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllPlaylists",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"A pessoa certa\", \r\n    \"artist\": \"Turma do Pagode\",\r\n    \"url\": \"https://open.spotify.com/track/5wcuXZAk6wgs326KIMzE6T?si=021061c88f654cd7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "357515ac-8b39-4d30-9691-39104950dfe1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Deixa Acontecer\", \r\n    \"artist\": \"Revelação\",\r\n    \"url\": \"https://open.spotify.com/track/50mawjudhEofTcUIpRmGXr?si=0f0444d6d02c495c\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "357515ac-8b39-4d30-9691-39104950dfe1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Coração radiante\", \r\n    \"artist\": \"Revelação\",\r\n    \"url\": \"https://open.spotify.com/track/1PWpeF2KQQzBjqkJPMqvpJ?si=742a014d327d4f63\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "357515ac-8b39-4d30-9691-39104950dfe1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPlaylistTracks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "357515ac-8b39-4d30-9691-39104950dfe1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "removeTrackFromPlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks/:trackId",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks",
+						":trackId"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "357515ac-8b39-4d30-9691-39104950dfe1"
+						},
+						{
+							"key": "trackId",
+							"value": "59f91c23-ab80-4f8d-aa38-8fb98e01668f"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPlaylistTracks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "357515ac-8b39-4d30-9691-39104950dfe1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Sofrência\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Românticas\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllPlaylists",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"O que é que tem\", \r\n    \"artist\": \"Jorge e Mateus\",\r\n    \"url\": \"https://open.spotify.com/track/1p6dBmCdP7xh3OMTYJDZPK?si=ca4edcb557384f93\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "c13c36da-1963-4336-8380-e8184bb549e9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addTrackToPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Stand by me\", \r\n    \"artist\": \"Boyce Avenue\",\r\n    \"url\": \"https://open.spotify.com/track/068qo0w1Ki0cjnFYOUhAm2?si=4cc31f152a8f4e5b\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "3d690e70-0094-465c-b31d-7036f73b253c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPlaylistTracks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "c13c36da-1963-4336-8380-e8184bb549e9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPlaylistTracks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "camila-graciano-gebru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+					"protocol": "https",
+					"host": [
+						"us-central1-labenu-apis",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"labefy",
+						"playlists",
+						":playlistId",
+						"tracks"
+					],
+					"variable": [
+						{
+							"key": "playlistId",
+							"value": "3d690e70-0094-465c-b31d-7036f73b253c"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
