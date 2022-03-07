@@ -1,99 +1,127 @@
-
-import React from 'react';
-import axios from 'axios';
-import styledComponents from 'styled-components';
-
-
-const urlUser =
-  "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users"
-
-const headers = {
-  headers: {
-    Authorization: "camila-graciano-gebru"
-  }
-}
+import React from "react";
+import axios from "axios";
+import styled from "styled-components";
+import TelaUser from "./Components/TelaUser";
 
 export default class App extends React.Component {
-
   state = {
-    users: [],
-    userInput: "",
-    emailInput: ""
-  };
+    userName: '',
+    email: '',
+    userList: [],
+    page: 1
+  }
 
   componentDidMount() {
-    this.getAllUsers();
+    this.getUserList()
   }
-  getAllUsers = () => {
-    axios
-      .get(urlUser, headers)
-      .then((res) => {
-        this.setState({ users: res.data })
-        // console.log(res.data.result)
+
+  getUserList = () => {
+    axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', {
+      headers: {
+        Authorization: 'camila-graciano-gebru'
+      }
+    })
+
+      .then((response) => {
+        this.setState({ userList: response.data })
       })
-      .catch((err) => {
-        console.log(err.message)
+
+      .catch((erro) => {
+        alert(erro.response)
       })
   }
 
   createUser = () => {
     const body = {
-      name: this.state.userInput,
-      email: this.state.emailInput
+      name: this.state.userName,
+      email: this.state.email
     }
-    axios
-      .post(urlUser, body, headers)
-      .then((res) => {
-        console.log(res.data.result)
-
-
-
-        this.setState({ userInput: "" })
-        this.setState({ emailInput: "" })
-        alert("Usuário Cadastrado com Sucesso")
-
-        this.getAllUsers()
-          .catch((err) => {
-            console.log(err.res.data.message)
-            alert("Inserção Inválida")
-
-          })
-      })
-    this.setState({ userInput: "" })
-    this.setState({ emailInput: "" })
-
-  }
-  onUserTextChange = (event) => {
-    this.setState({ userInput: event.target.value });
-  };
-  onEmailTextChange = (event) => {
-    this.setState({ emailInput: event.target.value });
-  };
-
-  render() {
-    const usersComponents = this.state.users.map((novo) => {
-      return <li key={novo.id}> {novo.name}</li>
+    axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', body, {
+      headers: {
+        Authorization: 'camila-graciano-gebru'
+      }
     })
 
-    return (
+      .then(() => {
+        this.setState({ userName: '' })
+        this.setState({ email: '' })
+        this.getUserList()
+        alert('Cadastrado com sucesso.')
+      })
 
+      .catch(() => {
+        alert("Erro.")
+      })
+  }
+
+  deleteUser = (id) => {
+    axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`, {
+      headers: {
+        Authorization: 'camila-graciano-gebru'
+      }
+    })
+      .then(() => {
+        alert('Usuário Deletado')
+        this.getUserList()
+      })
+
+      .catch ((error) => {
+        alert('Erro')
+        console.log(error.response)
+      })
+  }
+
+
+
+  onChangeNome = (event) => {
+    this.setState({ userName: event.target.value })
+  }
+
+  onChangeEmail = (event) => {
+    this.setState({ email: event.target.value })
+  }
+
+  mudarPagina = () => {
+    if (this.state.page === 1) {
+      return this.setState({ page: 2 })
+
+    } else if (this.state.page === 2) {
+      return this.setState({ page: 1 })
+    }
+  }
+
+  render() {
+
+    const pageCadastro = <div>
+      <h2> Cadastro </h2>
+      <input
+        value={this.state.userName}
+        placeholder="Nome"
+        onChange={this.onChangeNome} />
+      <input
+        value={this.state.email}
+        placeholder="E-mail"
+        onChange={this.onChangeEmail} />
+      <button onClick={this.createUser}>Criar usuário</button>
+    </div>
+
+    const pageLista = <div>
+      <h2> Lista de Usuários </h2>
+      {this.state.userList.map((item) => {
+        return <TelaUser 
+        list={item.name}
+        botao={() => this.deleteUser(item.id)}
+        />
+      })}
+    </div>
+
+    return (
       <div>
         <div>
-          <button>Trocar de Tela</button>
+          <button onClick={this.mudarPagina}>Tela Usuários/Voltar</button>
         </div>
-        <input
-          value={this.state.userInput}
-          placeholder="Nome"
-          onChange={this.onUserTextChange}
-        />
-        <input
-          value={this.state.emailInput}
-          placeholder="Email"
-          onChange={this.onEmailTextChange}
-        />
-        <button onClick={this.createUser}>Criar Usuário</button>
 
-        <div>{usersComponents}</div>
+        {this.state.page === 1 ? pageCadastro : pageLista}
 
       </div>
     )
