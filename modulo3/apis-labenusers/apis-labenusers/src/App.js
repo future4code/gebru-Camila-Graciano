@@ -1,6 +1,7 @@
 import React from "react";
-import SignUpScreen from "./components/SignUpScreen";
-import UsersListScreen from "./components/UsersListScreen";
+import SignUpPage from "./components/SignUpPage";
+import UsersList from "./components/UsersList";
+
 
 export default class App extends React.Component {
   state = {
@@ -19,9 +20,9 @@ export default class App extends React.Component {
     return (
       <div>
         <h2> LabenUsers </h2>
-        {this.state.renderedScreen === "signUp" ? <SignUpScreen /> : <UsersListScreen />}
-        <br/>
-        <button onClick={this.changePage}>Tela de usuários </button>
+        {this.state.renderedScreen === "signUp" ? <SignUpPage /> : <UsersList/>}
+       <br/>
+        <button onClick={this.changePage}>Trocar de tela</button>
       </div>
     );
   }

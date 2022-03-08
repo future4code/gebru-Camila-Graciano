@@ -1,12 +1,7 @@
-import React from 'react'
-import axios from 'axios'
-import styled from 'styled-components'
-import UserDetail from './UserDetail';
+import React from "react";
+import axios from "axios";
+import UserDetail from "./UserDetail";
 
-const DeleteButton = styled.span`
-  color: red;
-  cursor: pointer;
-`;
 
 const axiosConfig = {
   headers: {
@@ -14,7 +9,7 @@ const axiosConfig = {
   }
 };
 
-class UsersListScreen extends React.Component {
+class UsersList extends React.Component {
   state = {
     usersList: [],
     renderedScreen: "usersList",
@@ -36,9 +31,10 @@ class UsersListScreen extends React.Component {
         this.setState({ usersList: response.data });
       });
   };
-  handleUserDeletion = userId => {
+
+  handleUserDeletion = (userId) => {
     // eslint-disable-next-line no-restricted-globals
-    if (confirm ("Tem certeza que deseja apagar o usuário?")) {
+    if (confirm("Tem certeza que deseja apagar o usuário?")) {
       axios
         .delete(
           `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`,
@@ -54,7 +50,7 @@ class UsersListScreen extends React.Component {
     }
   };
 
-  changePage = userId => {
+  changePage = (userId) => {
     if (this.state.renderedScreen === "usersList") {
       this.setState({ renderedScreen: "userDetail", userId: userId });
     } else {
@@ -62,7 +58,7 @@ class UsersListScreen extends React.Component {
     }
   };
 
-  handleNameChange = event => {
+  handleNameChange = (event) => {
     const newNameValue = event.target.value;
 
     this.setState({ name: newNameValue });
@@ -98,11 +94,11 @@ class UsersListScreen extends React.Component {
                     <span onClick={() => this.changePage(user.id)}>
                       {user.name}
                     </span>
-                    <DeleteButton
+                    <button
                       onClick={() => this.handleUserDeletion(user.id)}
                     >
                       X
-                    </DeleteButton>
+                    </button>
                   </li>
                 );
               })}
@@ -125,4 +121,4 @@ class UsersListScreen extends React.Component {
   }
 }
 
-export default UsersListScreen
+export default UsersList;

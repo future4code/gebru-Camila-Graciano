@@ -1,20 +1,19 @@
-import React from 'react'
-import axios from 'axios'
+import React from "react";
+import axios from "axios";
 
-
-class SignUpScreen extends React.Component {
+class SignUpPage extends React.Component {
   state = {
     name: "",
     email: ""
   };
 
-  handleNameChange = (event) => {
+  handleNameChange = event => {
     const newNameValue = event.target.value;
 
     this.setState({ name: newNameValue });
   };
 
-  handleEmailChange = (event) => {
+  handleEmailChange = event => {
     const newEmailValue = event.target.value;
 
     this.setState({ email: newEmailValue });
@@ -42,7 +41,7 @@ class SignUpScreen extends React.Component {
         alert(`Usuário ${this.state.name} criado com sucesso!`);
         this.setState({ name: "", email: "" });
       })
-      .catch((error) => {
+      .catch(error => {
         alert("Erro ao criar o usuário");
         console.log(error);
       });
@@ -69,5 +68,4 @@ class SignUpScreen extends React.Component {
   }
 }
 
-export default SignUpScreen
-
+export default SignUpPage;
