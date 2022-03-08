@@ -1,129 +1,28 @@
 import React from "react";
-import axios from "axios";
-import styled from "styled-components";
-import TelaUser from "./Components/TelaUser";
+import SignUpScreen from "./components/SignUpScreen";
+import UsersListScreen from "./components/UsersListScreen";
 
 export default class App extends React.Component {
   state = {
-    userName: '',
-    email: '',
-    userList: [],
-    page: 1
-  }
+    renderedScreen: "signUp"
+  };
 
-  componentDidMount() {
-    this.getUserList()
-  }
-
-  getUserList = () => {
-    axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', {
-      headers: {
-        Authorization: 'camila-graciano-gebru'
-      }
-    })
-
-      .then((response) => {
-        this.setState({ userList: response.data })
-      })
-
-      .catch((erro) => {
-        alert(erro.response)
-      })
-  }
-
-  createUser = () => {
-    const body = {
-      name: this.state.userName,
-      email: this.state.email
+  changePage = () => {
+    if (this.state.renderedScreen === "signUp") {
+      this.setState({ renderedScreen: "users" });
+    } else {
+      this.setState({ renderedScreen: "signUp" });
     }
-    axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', body, {
-      headers: {
-        Authorization: 'camila-graciano-gebru'
-      }
-    })
-
-      .then(() => {
-        this.setState({ userName: '' })
-        this.setState({ email: '' })
-        this.getUserList()
-        alert('Cadastrado com sucesso.')
-      })
-
-      .catch(() => {
-        alert("Erro.")
-      })
-  }
-
-  deleteUser = (id) => {
-    axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`, {
-      headers: {
-        Authorization: 'camila-graciano-gebru'
-      }
-    })
-      .then(() => {
-        alert('Usuário Deletado')
-        this.getUserList()
-      })
-
-      .catch ((error) => {
-        alert('Erro')
-        console.log(error.response)
-      })
-  }
-
-
-
-  onChangeNome = (event) => {
-    this.setState({ userName: event.target.value })
-  }
-
-  onChangeEmail = (event) => {
-    this.setState({ email: event.target.value })
-  }
-
-  mudarPagina = () => {
-    if (this.state.page === 1) {
-      return this.setState({ page: 2 })
-
-    } else if (this.state.page === 2) {
-      return this.setState({ page: 1 })
-    }
-  }
+  };
 
   render() {
-
-    const pageCadastro = <div>
-      <h2> Cadastro </h2>
-      <input
-        value={this.state.userName}
-        placeholder="Nome"
-        onChange={this.onChangeNome} />
-      <input
-        value={this.state.email}
-        placeholder="E-mail"
-        onChange={this.onChangeEmail} />
-      <button onClick={this.createUser}>Criar usuário</button>
-    </div>
-
-    const pageLista = <div>
-      <h2> Lista de Usuários </h2>
-      {this.state.userList.map((item) => {
-        return <TelaUser 
-        list={item.name}
-        botao={() => this.deleteUser(item.id)}
-        />
-      })}
-    </div>
-
     return (
       <div>
-        <div>
-          <button onClick={this.mudarPagina}>Tela Usuários/Voltar</button>
-        </div>
-
-        {this.state.page === 1 ? pageCadastro : pageLista}
-
+        <h2> LabenUsers </h2>
+        {this.state.renderedScreen === "signUp" ? <SignUpScreen /> : <UsersListScreen />}
+        <br/>
+        <button onClick={this.changePage}>Tela de usuários </button>
       </div>
-    )
+    );
   }
 }
