@@ -1,12 +1,19 @@
-import React from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ProtectedPage from "../../components/ProtectedPage";
+import { BASE_URL } from "../../constants/urls";
+import UseRequestData  from "../../hooks/useRequestData";
+import { CardListTrip, ContainerAdmin} from "./style";
+import Loading from "../../assets/loading.gif"
 
 
-export default function AdminHomePage () {
-
-const navigate = useNavigate();
-
-const goToHome = () => {
+function AdminHomePage() {
+ const [listTrips, setListTrips, isLoading] = UseRequestData(`/trips`, {});
+  const navigate = useNavigate();
+  ProtectedPage()
+ 
+  const goToHome = () => {
     navigate(`/`)
   }
 
@@ -22,14 +29,43 @@ const goToHome = () => {
     navigate(`/admin/trips/create`)
   }
 
-    return (
-<div>
-    <h2> Eu sou a AdminHomePage </h2>
+  const deleteTrip = (id, name) => {
+    const token = localStorage.getItem(`token`)
+    const axiosConfig = {headers: {auth: token}}
+    const confirmDel = window.confirm(`Tem certeza que deletar a viagem para ${name}`)
+    if(confirmDel){
+      axios.delete(`${BASE_URL}/trips/${id}`, axiosConfig)
+      .then((res)=>{
+        alert(`Viagem deletada`)
+        setListTrips()
+      })
+      .catch((err)=>{
+        alert(`Erro na Admin Page`)
+      })
+    }
+  }
+
+  return (
+    <ContainerAdmin>
+      <h1>Painel Administrativo</h1>
+      <div className="btns">
       <button onClick={goToHome}>Voltar</button>
       <button onClick={goToCreateTrip}>Criar viagem</button>
       <button onClick={logout}>Logout</button>
-      <button onClick={goToTripDetail}>Detalhes da viagem</button>
-</div>
-
-    )
+      </div>
+   
+      {isLoading? <img src={Loading} alt= "gif de planeta girando"/> : listTrips.trips && listTrips.trips.map((trip)=>{
+        return (
+          <CardListTrip key={trip.id}>
+            <div  onClick={()=> goToTripDetail(trip.id)}>
+            <h3>{trip.name}</h3>
+            </div>
+          <button onClick={()=> deleteTrip(trip.id, trip.name)}></button>
+        </CardListTrip>
+      )
+      })}
+    </ContainerAdmin>
+  );
 }
+
+export default AdminHomePage

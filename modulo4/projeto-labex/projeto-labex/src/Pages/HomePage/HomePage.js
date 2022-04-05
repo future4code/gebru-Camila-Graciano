@@ -1,7 +1,9 @@
-import React from 'react';
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { ContainerHome, DivButton, StyleImg } from "./style";
 
-export default function HomePage () {
+
+function HomePage() {
     const navigate = useNavigate()
 
     const goToListTripPage = () =>{
@@ -15,14 +17,23 @@ export default function HomePage () {
           navigate("/login")
         }
     }
-  
-  
-  return (
-<div>
-    <h2> Eu sou a Home Page </h2>
-    <button onClick={goToListTripPage}>Ver viagens</button>
-    <button onClick={goToLoginPage}>Área de Admin</button>
-</div>
 
-    )
+  return (
+    <ContainerHome>
+          <DivButton>
+          <div>
+  
+          </div>
+        <button onClick={goToListTripPage}>Ver viagens</button>
+        <button onClick={goToLoginPage}>Área de Admin</button>
+        </DivButton>
+        <StyleImg>
+ 
+        </StyleImg>
+     
+   
+    </ContainerHome>
+  );
 }
+
+export default HomePage
