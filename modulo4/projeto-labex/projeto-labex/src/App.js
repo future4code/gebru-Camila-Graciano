@@ -1,15 +1,16 @@
-import React from 'react';
-import Router from './routes/Router';
-import GlobalStyled from "./AppStyled"
+import React from "react";
+import Router from "./routes/Router";
+import Glocal from "./AppStyle"
 
+ function App() {
 
-
-function App() {
   return (
-    <><GlobalStyled />
-    <Router />
+    <>
+      <Glocal />
+      <Router />
     </>
   );
 }
 
-export default App;
+export default App
+

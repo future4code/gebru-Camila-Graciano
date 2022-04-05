@@ -1,1 +1,1 @@
-export const BASE_URL = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/camila-gebru`
+export const BASE_URL = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/camila-graciano-gebru`

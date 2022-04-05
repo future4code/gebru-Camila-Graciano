@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Rocket from "../../assets/rocket.svg"
 import { ContainerHome, DivButton, StyleImg } from "./style";
-
+import Labex from "../../assets/LabeX1.png"
 
 function HomePage() {
     const navigate = useNavigate()
@@ -22,13 +23,13 @@ function HomePage() {
     <ContainerHome>
           <DivButton>
           <div>
-  
+          <img src={Labex}/>
           </div>
         <button onClick={goToListTripPage}>Ver viagens</button>
         <button onClick={goToLoginPage}>Área de Admin</button>
         </DivButton>
         <StyleImg>
- 
+        <img src={Rocket}/>
         </StyleImg>
      
    

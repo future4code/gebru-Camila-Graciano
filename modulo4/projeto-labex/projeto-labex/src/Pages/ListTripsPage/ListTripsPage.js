@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import UseRequestData from "../../hooks/useRequestData";
 import { CardListTrip,ContainerTrips, NavButton } from "./style";
-import Loading from "../../assets/loading.gif"
+import Loading from "../../assets/animation.gif"
 
 function ListTripsPage() {
   const navigate = useNavigate()
@@ -29,11 +29,11 @@ function ListTripsPage() {
   return (
     <ContainerTrips>
       <NavButton>
-        <button onClick={goToHomePage} className="btn item1">Voltar</button>
-        <button onClick={goToAplicationForm} className="btn item2">Inscrever-se</button>
+        <a onClick={goToHomePage} className="btn item1">Voltar</a>
+        <a onClick={goToAplicationForm} className="btn item2">Inscrever-se</a>
       </NavButton>
       <h1>Lista de viagens</h1>
-        {isLoading? <img src={Loading} alt="gif planeta girando" className="animation"/> : renderedList}
+        {isLoading? <img src={Loading} className="animation"/> : renderedList}
     </ContainerTrips>
   );
 }

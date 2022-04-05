@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import ProtectedPage from "../../components/ProtectedPage";
 import { BASE_URL } from "../../constants/urls";
 import UseRequestData  from "../../hooks/useRequestData";
-import { CardListTrip, ContainerAdmin} from "./style";
-import Loading from "../../assets/loading.gif"
+import { CardListTrip, ContainerAdmin, Trash } from "./style";
+import Loading from "../../assets/animation.gif"
 
 
 function AdminHomePage() {
@@ -54,13 +54,13 @@ function AdminHomePage() {
       <button onClick={logout}>Logout</button>
       </div>
    
-      {isLoading? <img src={Loading} alt= "gif de planeta girando"/> : listTrips.trips && listTrips.trips.map((trip)=>{
+      {isLoading? <img src={Loading}/> : listTrips.trips && listTrips.trips.map((trip)=>{
         return (
           <CardListTrip key={trip.id}>
             <div  onClick={()=> goToTripDetail(trip.id)}>
             <h3>{trip.name}</h3>
             </div>
-          <button onClick={()=> deleteTrip(trip.id, trip.name)}></button>
+          <buttoon onClick={()=> deleteTrip(trip.id, trip.name)}><Trash/></buttoon>
         </CardListTrip>
       )
       })}

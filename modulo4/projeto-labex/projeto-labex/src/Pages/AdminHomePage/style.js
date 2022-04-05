@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FaTrash } from "react-icons/fa"
 
 export const ContainerAdmin = styled.div`
 display: flex;
@@ -54,5 +55,14 @@ div{
         width: 19vw;
         height: 3vh;
     }
+}
+`
+export const Trash = styled(FaTrash)`
+color: #000;
+height: 20px;
+width: 20px;
+&:hover{
+    color: #ff6584;
+    background-color: #ffffff;
 }
 `

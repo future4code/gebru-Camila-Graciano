@@ -8,6 +8,6 @@ export default createGlobalStyle`
         box-sizing: border-box;
     }
     body{
-      background-color: #8B658B;
+      background-color: #3f3d56 ;
     }
 `

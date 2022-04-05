@@ -6,7 +6,7 @@ import { BASE_URL } from "../../constants/urls";
 import UseRequestData  from "../../hooks/useRequestData";
 import { CardsCandidates, CotainerDetail, DetailTrip, StyleButton, Animation } from "./style";
 import { useNavigate } from "react-router-dom";
-import Loading from "../../assets/loading.gif"
+import Loading from "../../assets/animation.gif"
 
 function TripDetailPage() {
   const params = useParams()
