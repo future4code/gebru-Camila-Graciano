@@ -3,8 +3,8 @@ import React from "react";
 import { BASE_URL } from "../../constants/urls";
 import UseForm from "../../hooks/useForm";
 import { planets } from "../../constants/planets";
-import ProtectedPage from "../../components/ProtectedPage";
-import { ContainerForms, InputStyle, SelectStyle } from "../ApplicationFormPage/style";
+import ProtectedPage from "../../components/ProtectedPage/ProtectedPage";
+import { ContainerForms, InputStyle, SelectStyle } from "../AplicationFormPage/style";
 import { useNavigate } from "react-router-dom";
 
 function CreateTripPage() {

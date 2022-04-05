@@ -36,7 +36,7 @@ flex-direction: column;
 justify-content: space-between;
 align-items: flex-start;
 
-height: 25vh;
+height: 22vh;
 width: 21.5vw;
 margin: 20px;
 

@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants/urls";
 import UseForm from "../../hooks/useForm";
-import { InputStyle } from "../ApplicationFormPage/style";
+import { InputStyle } from "../AplicationFormPage/style";
 import { ContainerLogin, FormStyle } from "./style";
 
 function LoginPage() {

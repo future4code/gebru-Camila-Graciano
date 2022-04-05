@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import ProtectedPage from "../../components/ProtectedPage";
+import ProtectedPage from "../../components/ProtectedPage/ProtectedPage";
 import { BASE_URL } from "../../constants/urls";
 import UseRequestData  from "../../hooks/useRequestData";
 import { CardsCandidates, CotainerDetail, DetailTrip, StyleButton, Animation } from "./style";

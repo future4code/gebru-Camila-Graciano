@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ProtectedPage from "../../components/ProtectedPage";
+import ProtectedPage from "../../components/ProtectedPage/ProtectedPage";
 import { BASE_URL } from "../../constants/urls";
 import UseRequestData  from "../../hooks/useRequestData";
 import { CardListTrip, ContainerAdmin, Trash } from "./style";
