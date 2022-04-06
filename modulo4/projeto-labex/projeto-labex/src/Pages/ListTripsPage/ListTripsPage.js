@@ -33,7 +33,7 @@ function ListTripsPage() {
         <a onClick={goToAplicationForm} className="btn item2">Inscrever-se</a>
       </NavButton>
       <h1>Lista de viagens</h1>
-        {isLoading? <img src={Loading} className="animation"/> : renderedList}
+        {isLoading? <img src={Loading} alt = "" className="animation"/> : renderedList}
     </ContainerTrips>
   );
 }

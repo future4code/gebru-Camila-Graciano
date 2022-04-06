@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
-const ProtectedPage = () =>{
+const useProtectedPage = () =>{
     const navigate = useNavigate();
 
     useEffect(()=>{
@@ -16,4 +16,4 @@ const ProtectedPage = () =>{
     )
 }
 
-export default ProtectedPage
+export default useProtectedPage

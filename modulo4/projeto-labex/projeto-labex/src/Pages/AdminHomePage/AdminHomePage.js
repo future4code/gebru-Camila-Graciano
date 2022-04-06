@@ -1,17 +1,18 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ProtectedPage from "../../components/ProtectedPage/ProtectedPage";
+import useProtectedPage from "../../hooks/useProtectedPage";
 import { BASE_URL } from "../../constants/urls";
 import UseRequestData  from "../../hooks/useRequestData";
-import { CardListTrip, ContainerAdmin, Trash } from "./style";
+import { CardListTrip, ContainerAdmin, Trash, Animation } from "./style";
 import Loading from "../../assets/animation.gif"
+import Labex from "../../assets/LabeX1.png"
 
 
 function AdminHomePage() {
  const [listTrips, setListTrips, isLoading] = UseRequestData(`/trips`, {});
   const navigate = useNavigate();
-  ProtectedPage()
+  useProtectedPage()
  
   const goToHome = () => {
     navigate(`/`)
@@ -47,6 +48,9 @@ function AdminHomePage() {
 
   return (
     <ContainerAdmin>
+       <div>
+          <img src={Labex} alt = ""/>
+          </div>
       <h1>Painel Administrativo</h1>
       <div className="btns">
       <button onClick={goToHome}>Voltar</button>
@@ -54,13 +58,13 @@ function AdminHomePage() {
       <button onClick={logout}>Logout</button>
       </div>
    
-      {isLoading? <img src={Loading}/> : listTrips.trips && listTrips.trips.map((trip)=>{
+      {isLoading? <Animation src={Loading} alt= ""/> : listTrips.trips && listTrips.trips.map((trip)=>{
         return (
           <CardListTrip key={trip.id}>
             <div  onClick={()=> goToTripDetail(trip.id)}>
             <h3>{trip.name}</h3>
             </div>
-          <buttoon onClick={()=> deleteTrip(trip.id, trip.name)}><Trash/></buttoon>
+          <button onClick={()=> deleteTrip(trip.id, trip.name)}><Trash/></button>
         </CardListTrip>
       )
       })}

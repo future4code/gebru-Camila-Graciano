@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import ProtectedPage from "../../components/ProtectedPage/ProtectedPage";
+import useProtectedPage from "../../hooks/useProtectedPage";
 import { BASE_URL } from "../../constants/urls";
 import UseRequestData  from "../../hooks/useRequestData";
 import { CardsCandidates, CotainerDetail, DetailTrip, StyleButton, Animation } from "./style";
@@ -13,7 +13,7 @@ function TripDetailPage() {
   const [detailTrip, setDetailTrip, isLoading] = UseRequestData(`/trip/${params.id}`, [])
   const [aprove, setAprove] = useState(true)
   const navigate = useNavigate()
-  ProtectedPage()
+  useProtectedPage()
 
 
   const goToAdminPage = () => {

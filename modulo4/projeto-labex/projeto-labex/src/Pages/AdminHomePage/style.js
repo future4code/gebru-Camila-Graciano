@@ -66,3 +66,9 @@ width: 20px;
     background-color: #ffffff;
 }
 `
+export const Animation = styled.img`
+justify-content: center;
+align-items: center;
+top: 35vh;
+width: 60vh;
+`

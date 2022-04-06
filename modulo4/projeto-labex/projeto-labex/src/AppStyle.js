@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
@@ -8,6 +7,6 @@ export default createGlobalStyle`
         box-sizing: border-box;
     }
     body{
-      background-color: #3f3d56 ;
+      background-color: #3f3d56;
     }
 `

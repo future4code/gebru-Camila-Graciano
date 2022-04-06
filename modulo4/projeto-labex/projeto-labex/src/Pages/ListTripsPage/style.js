@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CardListTrip = styled.div`
 display: flex;
 flex-direction: column;
-height: 20vh;
+height: 25vh;
 width: 25vw;
 margin: 20px;
 font-size: 18px;
@@ -26,9 +26,10 @@ h1{
     color: #f2f2f2;
 }
 .animation{
-    position: absolute;
-    top: 35vh;
-    left: 45vw;
+top: 45vh;
+justify-content: center;
+align-items: center;
+width: 100vh;
 }
 `
 export const NavButton = styled.div`

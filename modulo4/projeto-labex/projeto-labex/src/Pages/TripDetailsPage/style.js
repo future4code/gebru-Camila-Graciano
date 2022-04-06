@@ -54,9 +54,10 @@ strong{
 }
 `
 export const Animation = styled.img`
-position: absolute;
 top: 35vh;
-left: 45vw;
+justify-content: center;
+align-items: center;
+width: 60vh;
 `
 
 

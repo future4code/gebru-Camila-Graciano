@@ -3,14 +3,14 @@ import React from "react";
 import { BASE_URL } from "../../constants/urls";
 import UseForm from "../../hooks/useForm";
 import { planets } from "../../constants/planets";
-import ProtectedPage from "../../components/ProtectedPage/ProtectedPage";
+import useProtectedPage from "../../hooks/useProtectedPage";
 import { ContainerForms, InputStyle, SelectStyle } from "../AplicationFormPage/style";
 import { useNavigate } from "react-router-dom";
 
 function CreateTripPage() {
   const { form, onChange, clearFields } = UseForm({ name: "", planet: "", date: "", description: "", durationInDays: "" })
   const navigate = useNavigate()
-  ProtectedPage()
+  useProtectedPage()
   
   const goToAdminPage = () => {
     navigate("/admin/trips/list")
