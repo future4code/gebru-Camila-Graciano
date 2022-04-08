@@ -7,13 +7,20 @@ justify-content: center;
 flex-direction: column;
 width: 100vw;
 height: 100vh;
+img{
+    width: 35vw;
+    margin-bottom: 20px;
+    object-fit: cover;
+    align-items: center;
+    justify-content: center;
+}
 h1{
     color: #f2f2f2;
 }
 div{
     display: flex;
     justify-content: space-evenly;
-    padding-top: 20px;
+    padding-top: 10px;
     button{
     font-size: 16px;
     color: #000;
@@ -21,10 +28,10 @@ div{
     width: 5vw;
     border-radius: 20px;
     border: 2px solid #ffffff;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     cursor: pointer;
     &:hover{
-        background-color: #ffffff;
+        background-color: grey;
     }
     }
 }

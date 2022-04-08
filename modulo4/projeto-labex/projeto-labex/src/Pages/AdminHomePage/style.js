@@ -10,6 +10,14 @@ justify-content: center;
 width: 100vw;
 height: 100vh;
 
+img{
+    width: 35vw;
+    margin-top: 3vw;
+    object-fit: cover;
+    align-items: center;
+    justify-content: center;
+}
+
 h1{
     color: #ffffff;
 }
@@ -18,6 +26,7 @@ h1{
     justify-content: space-around;
     margin: 20px;
     width: 25vw;
+    color: #000;
     button{
         font-size: 15px;
         background-color: #f2f2f2;
@@ -25,8 +34,9 @@ h1{
         padding: 13px;
         border-radius: 15px;
         cursor: pointer;
+        color: #000;
         &:hover{
-            background-color: #ffffff;
+            background-color:grey;
         }
     }
 }
@@ -43,7 +53,7 @@ height: 6vh;
 padding: 0 15px;
 
 
-color: #ffffff;
+color: #3f3d56;
 background-color: #f2f2f2;
 border-radius: 10px;
 cursor: pointer;
@@ -58,7 +68,7 @@ div{
 }
 `
 export const Trash = styled(FaTrash)`
-color: #ffffff;
+color: #3f3d56;
 height: 20px;
 width: 20px;
 &:hover{
@@ -67,8 +77,9 @@ width: 20px;
 }
 `
 export const Animation = styled.img`
-justify-content: center;
 align-items: center;
-top: 35vh;
-width: 100vh;
+justify-content: center;
+width: 80vh;
+margin: auto;
 `
+

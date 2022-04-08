@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CardListTrip = styled.div`
 display: flex;
 flex-direction: column;
-height: 25vh;
+height: 29vh;
 width: 25vw;
 margin: 20px;
 font-size: 18px;
@@ -74,28 +74,25 @@ cursor: pointer;
     transform-origin: left;
     transition: transform 300ms ease-in;
 }
-.item1:hover::before{
-    transform: scaleX(1);
-    transform-origin: right;
-}
+.item1:hover{
+            background-color: grey;
+        }
+
 .item2::before{
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
+}
 
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 300ms ease-in;
-}
-.item2:hover::before{
-    transform: scaleX(1);
-    transform-origin: left;
-}
+.item2:hover{
+            background-color: grey;
+        }
+
 `
 export const Animation = styled.img`
-justify-content: center;
 align-items: center;
-top: 35vh;
-width: 100vh;
+justify-content: center;
+width: 80vh;
+margin: auto;
 `

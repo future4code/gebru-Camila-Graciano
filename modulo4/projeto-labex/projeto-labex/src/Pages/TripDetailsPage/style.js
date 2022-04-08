@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-
-
 export const CotainerDetail = styled.div`
 display: grid;
 grid-template-columns: repeat(3, 1fr);
@@ -14,17 +12,18 @@ height: 100vh;
 color: #f2f2f2;
 .button{
     font-size: 16px;
-    color: #ffffff;
+    font-weight: 600;
+    color: #000;
     margin: 10px;
     padding: 13px;
     width: 100px;
     border-radius: 15px;
     border: 2px solid #ffffff;
-    background-color: #3f3d56;
+    background-color: #ffffff;
     cursor: pointer;
     &:hover{
-        color: #ff6584;
-        background-color: #ffffff;
+        color: #000;
+        background-color: grey;
         transition: all 600ms ease;
     }
 } 
@@ -36,7 +35,7 @@ flex-direction: column;
 justify-content: space-between;
 align-items: flex-start;
 
-height: 22vh;
+height: 30vh;
 width: 21.5vw;
 margin: 20px;
 
@@ -54,12 +53,9 @@ strong{
 }
 `
 export const Animation = styled.img`
-top: 35vh;
-justify-content: center;
-align-items: center;
-width: 60vh;
+width: 10vh;
+margin-left: 18em;
 `
-
 
 export const DetailTrip = styled.div`
 color: #f2f2f2;
@@ -125,5 +121,4 @@ justify-content: space-between;
     z-index: 2;
   
 }
-
 `

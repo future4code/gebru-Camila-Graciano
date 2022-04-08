@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import Sky from "./assets/sky.jpg"
 
 export default createGlobalStyle`
     *{
@@ -7,6 +8,6 @@ export default createGlobalStyle`
         box-sizing: border-box;
     }
     body{
-      background-color: #3f3d56;
+      background-image: url(${Sky});
     }
 `

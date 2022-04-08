@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import UseRequestData from "../../hooks/useRequestData";
 import { CardListTrip,ContainerTrips, NavButton, Animation } from "./style";
-import Loading from "../../assets/animation.gif"
+import Loading from "../../assets/animation.png"
 
 function ListTripsPage() {
   const navigate = useNavigate()

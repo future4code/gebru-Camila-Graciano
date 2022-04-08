@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { BASE_URL } from "../../constants/urls";
 import UseRequestData  from "../../hooks/useRequestData";
-import { CardsCandidates, CotainerDetail, DetailTrip, StyleButton, Animation } from "./style";
+import { CardsCandidates, CotainerDetail, DetailTrip, StyleButton, Animation} from "./style";
 import { useNavigate } from "react-router-dom";
-import Loading from "../../assets/animation.gif"
+import Loading from "../../assets/animation.png"
 
 function TripDetailPage() {
   const params = useParams()
@@ -47,8 +47,8 @@ function TripDetailPage() {
         <p><strong>Idade:</strong> {candidate.age}</p>
         <p><strong>Texto de candidatura:</strong> {candidate.applicationText}</p>
         <StyleButton>
-          <a onClick={()=> decideCandidates(candidate.id)} className="btn item1">Aprovar</a>
-          <a onClick={()=> decideCandidates(candidate.id)} onChange={changeDecide}  className="btn item2">Reprovar</a>
+          <button onClick={()=> decideCandidates(candidate.id)} className="btn item1">Aprovar</button>
+          <button onClick={()=> decideCandidates(candidate.id)} onChange={changeDecide}  className="btn item2">Reprovar</button>
         </StyleButton>
       </CardsCandidates>
     )
@@ -77,14 +77,14 @@ function TripDetailPage() {
  
         <div>
           <h1>Lista de candidatos:</h1>
-        {listCandidate && listCandidate.length === 0? <h3>Não há candidatos para esta viagem</h3> : listCandidate}
+        {listCandidate && listCandidate.length === 0? <h2>Não há candidatos para esta viagem</h2> : listCandidate}
 
         </div>
 
 
         <div>
           <h1>Candidatos aprovados:</h1>
-          {candidatesAproved && candidatesAproved.length === 0? <h3>Nenhum candidato aprovado</h3> : candidatesAproved}
+          {candidatesAproved && candidatesAproved.length === 0? <h2>Nenhum candidato aprovado</h2> : candidatesAproved}
         </div>
     </CotainerDetail>}
     </>

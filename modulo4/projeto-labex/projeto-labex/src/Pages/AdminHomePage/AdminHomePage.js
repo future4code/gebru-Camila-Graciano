@@ -5,7 +5,7 @@ import useProtectedPage from "../../hooks/useProtectedPage";
 import { BASE_URL } from "../../constants/urls";
 import UseRequestData  from "../../hooks/useRequestData";
 import { CardListTrip, ContainerAdmin, Trash, Animation } from "./style";
-import Loading from "../../assets/animation.gif"
+import Loading from "../../assets/animation.png"
 import Labex from "../../assets/LabeX1.png"
 
 

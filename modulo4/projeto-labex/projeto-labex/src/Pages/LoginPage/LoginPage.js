@@ -5,6 +5,7 @@ import { BASE_URL } from "../../constants/urls";
 import UseForm from "../../hooks/useForm";
 import { InputStyle } from "../AplicationFormPage/style";
 import { ContainerLogin, FormStyle } from "./style";
+import Labex from "../../assets/LabeX1.png"
 
 function LoginPage() {
     const navigate = useNavigate()
@@ -35,6 +36,9 @@ function LoginPage() {
     }
   return (
     <ContainerLogin>
+       <div>
+          <img src={Labex} alt = ""/>
+          </div>
         <h1>Login</h1>
         <FormStyle onSubmit={onSubmitLogin}>
           <InputStyle placeholder="E-mail"
