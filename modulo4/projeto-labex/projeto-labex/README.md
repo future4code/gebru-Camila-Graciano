@@ -26,4 +26,24 @@ password: 369147
 ### Link surge 
 http://careful-advice.surge.sh/
 
+🚀 Tecnologias utilizadas
+o projeto foi desenvolvido usando as seguintes tecnologias:
 
+React.js
+Styled-Components
+Hooks
+
+
+💾 Como baixar o projeto
+Primeiro instale o Git, Node.jS + npm
+# Clonar o repositório
+git clone https://github.com/Ale557333/Astromatch.git
+
+# Entrar no diretório
+cd astromatch
+
+# Instalar as dependências
+npm install
+
+# Rodar o projeto
+npm run start
