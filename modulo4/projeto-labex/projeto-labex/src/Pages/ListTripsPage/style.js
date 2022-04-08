@@ -25,12 +25,6 @@ justify-items: center;
 h1{
     color: #f2f2f2;
 }
-.animation{
-top: 45vh;
-justify-content: center;
-align-items: center;
-width: 100vh;
-}
 `
 export const NavButton = styled.div`
 display: flex;
@@ -52,7 +46,7 @@ border-radius: 17px;
 font-size: 18px;
 font-weight: 600;
 
-color: #ffffff;
+color: #000;
 border: 2px solid #ffffff;
 overflow: hidden;
 cursor: pointer;
@@ -98,4 +92,10 @@ cursor: pointer;
     transform: scaleX(1);
     transform-origin: left;
 }
+`
+export const Animation = styled.img`
+justify-content: center;
+align-items: center;
+top: 35vh;
+width: 100vh;
 `

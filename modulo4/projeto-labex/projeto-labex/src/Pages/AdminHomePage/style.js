@@ -43,7 +43,7 @@ height: 6vh;
 padding: 0 15px;
 
 
-color: #000;
+color: #ffffff;
 background-color: #f2f2f2;
 border-radius: 10px;
 cursor: pointer;
@@ -58,7 +58,7 @@ div{
 }
 `
 export const Trash = styled(FaTrash)`
-color: #000;
+color: #ffffff;
 height: 20px;
 width: 20px;
 &:hover{
@@ -70,5 +70,5 @@ export const Animation = styled.img`
 justify-content: center;
 align-items: center;
 top: 35vh;
-width: 60vh;
+width: 100vh;
 `

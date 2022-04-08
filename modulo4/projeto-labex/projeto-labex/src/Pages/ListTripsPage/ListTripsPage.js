@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import UseRequestData from "../../hooks/useRequestData";
-import { CardListTrip,ContainerTrips, NavButton } from "./style";
+import { CardListTrip,ContainerTrips, NavButton, Animation } from "./style";
 import Loading from "../../assets/animation.gif"
 
 function ListTripsPage() {
@@ -29,11 +29,11 @@ function ListTripsPage() {
   return (
     <ContainerTrips>
       <NavButton>
-        <a onClick={goToHomePage} className="btn item1">Voltar</a>
-        <a onClick={goToAplicationForm} className="btn item2">Inscrever-se</a>
+        <button onClick={goToHomePage} className="btn item1">Voltar</button>
+        <button onClick={goToAplicationForm} className="btn item2">Inscrever-se</button>
       </NavButton>
       <h1>Lista de viagens</h1>
-        {isLoading? <img src={Loading} alt = "" className="animation"/> : renderedList}
+        {isLoading? <Animation src={Loading} alt = ""/> : renderedList}
     </ContainerTrips>
   );
 }

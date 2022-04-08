@@ -18,7 +18,7 @@ flex-direction: column;
 width: 50vw;
 button{
     font-size: 16px;
-    color: #ffffff;
+    color: #000;
     margin: 20px;
     padding: 25px;
     width: 12vw;
