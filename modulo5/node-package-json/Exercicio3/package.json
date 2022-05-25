@@ -1,0 +1,12 @@
+{
+  "name": "package-json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "exercicio3.js",
+  "scripts": {
+    "start": "node ./exercicio3.js"
+  },
+  "keywords": [],
+  "author": "Camila Graciano",
+  "license": "ISC"
+}
