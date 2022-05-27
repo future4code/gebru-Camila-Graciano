@@ -26,9 +26,9 @@ enum coresArcoIris{
 	VIOLETA='Violeta'
 }
 type Pessoa={
-	nome:String,
+	nome:string,
 	idade:number,
-	corFavorita:string
+	corFavorita:coresArcoIris
 }
 const pessoa1:Pessoa={
 	nome:'Camila',
