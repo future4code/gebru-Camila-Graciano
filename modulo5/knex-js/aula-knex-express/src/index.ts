@@ -96,32 +96,47 @@ const avgSalary = async (gender: string): Promise<any> => {
 
 // Exercício 3
 //a)
+const getActorById = async (id: string): Promise<any> => {
+  const result = await connection("Actor")
+      .select()
+      .where("id", id)
 
+  return result[0]
+}
 app.get("/actor/:id", async (req: Request, res: Response) => {
-    try {
+  try {
       const id = req.params.id;
-      const result = await connection.raw(`
-      SELECT * FROM Actor WHERE id = "${id}"
-    `);
+      const actor = await getActorById(id);
 
-      res.status(200).send(result[0])
-    
-    } catch (error: any) {
-      res.status(500).send(error.sqlMessage || error.message);
-    }
-  });
+      res.status(200).send(actor)
+  } catch (err: any) {
+      res.status(400).send({
+          message: err.message,
+      });
+  }
+});
 
   //b)
+  const getActorByGender = async (gender: string): Promise<any> => {
+    const result = await connection("Actor")
+        .count()
+        .where({gender})
 
-  app.get("/actor?gender", async (req: Request, res: Response) => {
+    return result
+}
+app.get("/actor", async (req: Request, res: Response) => {
     try {
-    const result = await connection("Actor").count().where({ gender: req.query.gender });
-    res.status(200).send(result);
-    
-    } catch (error: any) {
-      res.status(500).send(error.sqlMessage || error.message);
+        const gender = req.query.gender;
+        const actor = await getActorByGender(gender as string);
+
+        res.status(200).send(actor)
+    } catch (err: any) {
+        res.status(400).send({
+            message: err.message,
+        });
     }
-  });
+});
+
 
 
 // Exercício 4
