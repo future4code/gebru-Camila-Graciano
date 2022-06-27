@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import insertUser from "../data/insertUser";
 
 
-export default async function createUser (req:Request, res:Response) {
+export default async function createUser (req:Request, res:Response): Promise<void> {
     try {
         if (
             !req.body.name ||
@@ -10,6 +10,9 @@ export default async function createUser (req:Request, res:Response) {
             !req.body.email 
         ){
          res.status(400).send ('Preencha os campos "name", "nickname" e "email"')
+
+         return 
+         
         }
 
        const id: string = Date.now() + Math.random().toString()

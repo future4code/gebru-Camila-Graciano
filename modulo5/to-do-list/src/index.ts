@@ -4,6 +4,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { AddressInfo } from "net";
 import createUser from "./endpoints/createUser";
+import getUser from "./endpoints/getUser";
+import editUser from "./endpoints/editUser";
+import createTask from "./endpoints/createTask";
+import getTask from "./endpoints/getTask";
 
 dotenv.config();
 
@@ -22,13 +26,18 @@ const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
-app.put('/', createUser)
+app.put('/user', createUser)
+app.get('/user/:id', getUser)
+app.post('user/edit/:id', editUser)
+
+app.put('/task', createTask)
+app.get('/task/:id', getTask)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
        const address = server.address() as AddressInfo;
-       console.log(`Server is running in http://localhost: ${address.port}`);
+       console.log(`O server tá on em http://localhost: ${address.port}`);
     } else {
-       console.error(`Failure upon starting server.`);
+       console.error(`O server tá off.`);
     }
 });
