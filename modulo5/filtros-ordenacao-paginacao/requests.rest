@@ -1,0 +1,27 @@
+## ENDPOINTS
+
+Pegar todas as receitas
+Método GET 
+http://localhost:3003/recipes
+
+Filtragem por nome
+Método GET 
+http://localhost:3003/user 
+
+Pega todos os users filtrados por ordenação e a paginação
+Método GET 
+http://localhost:3003/user/fullsearch
+
+Pegar os users ordenados 
+Caso o usuário não forneça parâmetro de ordenação,
+o endpoint ordena por nome em ordem decrescente
+Método GET 
+http://localhost:3003/user/search 
+
+Filtragem por página 
+Método GET 
+http://localhost:3003/user/page
+
+Filtragem por tipo de user
+Método GET 
+http://localhost:3003/user/:type
