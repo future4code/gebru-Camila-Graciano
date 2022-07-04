@@ -1,31 +1,22 @@
-import express, { Express } from "express";
-import knex from "knex";
-import cors from "cors";
-import dotenv from "dotenv";
-import { AddressInfo } from "net";
+iimport { app } from "./app"
+import { createUser } from "./enpoints/createUser"
+import { createProduct } from "./enpoints/createProduct"
+import { createPurchases } from "./enpoints/createPurchases"
+import { getAllUsers } from "./enpoints/getAllUsers"
+import { getAllProducts } from "./enpoints/getAllProducts"
+import { getPurchasesByUserId } from "./enpoints/getPurchasesByUserId"
 
-dotenv.config();
+// Endpoint que pega todos os users
+app.get("/users", getAllUsers)
+// Endpoint que pega todas as compra de um usuário pelo user_id
+app.get("/users/:userId/purchases", getPurchasesByUserId)
+// Endpoint que cria um usuário
+app.post("/users", createUser)
 
-export const connection = knex({
-	client: "mysql",
-	connection: {
-    host: process.env.DB_HOST,
-    port: 3306,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME
-  }
-});
+//Endpoint que pega todos os produtos
+app.get("/products", getAllProducts)
+//Endpoint que cria um produto
+app.post("/products", createProduct)
 
-const app: Express = express();
-app.use(express.json());
-app.use(cors());
-
-const server = app.listen(process.env.PORT || 3003, () => {
-    if (server) {
-       const address = server.address() as AddressInfo;
-       console.log(`Server is running in http://localhost: ${address.port}`);
-    } else {
-       console.error(`Failure upon starting server.`);
-    }
-});
+// Endpoint que realiza uma compra
+app.post("/purchases", createPurchases)
