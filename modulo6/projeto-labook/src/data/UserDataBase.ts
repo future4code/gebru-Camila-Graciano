@@ -1,34 +1,110 @@
-import { UserRepository } from "../business/UserRepository";
-import { Users, User } from "../model/User";
-import { BaseDataBase } from "./BaseDataBase";
+import { User, GetUserOutput, InterfaceUserDatabase, AddFriendInput, getFriendshipOutput } from '../model/User'
+import { BaseDatabase } from './BaseDatabase'
 
-export class UserDataBase extends BaseDataBase implements UserRepository {
+export class UserDatabase extends BaseDatabase implements InterfaceUserDatabase {
+    private USER_TABLE = "labook_users"
+    private FRIENDSHIP_TABLE = "labook_friendships"
 
-    private static TABLE_NAME = "labook_user"
-
-    async insertUser (user: User) {
+    public getUserByEmail = async (email: string): Promise<GetUserOutput> => {
         try {
-            await BaseDataBase.connection
-            .insert(user)
-            .into(UserDataBase.TABLE_NAME)
+            const result: GetUserOutput[] = await this.connection(this.USER_TABLE)
+                .where({ email })
 
-        } catch (error: any) {
-            throw new Error(error.sqlMessage || error.message)
+            return result[0]
         }
-
+        catch (err: any) {
+            if (err instanceof Error) {
+                throw new Error(err.message)
+            } else {
+                throw new Error(err.sqlMessage)
+            }
+        }
     }
 
-    findUserEmail = async(email: string): Promise <Users> => {
+    public getUserById = async (id: string): Promise<GetUserOutput> => {
         try {
-            const user = await BaseDataBase.connection
-            .select("*")
-            .where({email})
-            .into(UserDataBase.TABLE_NAME)
+            const result: GetUserOutput[] = await this.connection(this.USER_TABLE)
+                .where({ id })
 
-            return user[0]
-
-        } catch (error: any) {
-            throw new Error(error.sqlMessage || error.message)
+            return result[0]
         }
-     }
+        catch (err: any) {
+            if (err instanceof Error) {
+                throw new Error(err.message)
+            } else {
+                throw new Error(err.sqlMessage)
+            }
+        }
+    }
+
+    public getFriendship = async (userId: string, friendId: string): Promise<getFriendshipOutput> => {
+        try {
+            const friendship: getFriendshipOutput[] = await this.connection(this.FRIENDSHIP_TABLE)
+                .select('id', 'user_id as userId', 'friend_id as friendId')
+                .where({ user_id: userId })
+                .andWhere({ friend_id: friendId })
+
+            return friendship[0]
+        }
+        catch (err: any) {
+            if (err instanceof Error) {
+                throw new Error(err.message)
+            } else {
+                throw new Error(err.sqlMessage)
+            }
+        }
+    }
+
+    public insertUser = async (user: User): Promise<void> => {
+        try {
+            await this.connection(this.USER_TABLE)
+                .insert(user)
+        }
+        catch (err: any) {
+            if (err instanceof Error) {
+                throw new Error(err.message)
+            } else {
+                throw new Error(err.sqlMessage)
+            }
+        }
+    }
+
+    public insertFriendship = async (input: AddFriendInput): Promise<void> => {
+        try {
+            await this.connection(this.FRIENDSHIP_TABLE)
+                .insert({
+                    id: input.idForUserFriendship,
+                    user_id: input.userId,
+                    friend_id: input.friendId
+                })
+            await this.connection(this.FRIENDSHIP_TABLE)
+                .insert({
+                    id: input.idForFriendFriendship,
+                    user_id: input.friendId,
+                    friend_id: input.userId
+                })
+        }
+        catch (err: any) {
+            if (err instanceof Error) {
+                throw new Error(err.message)
+            } else {
+                throw new Error(err.sqlMessage)
+            }
+        }
+    }
+
+    public deleteFriendship = async (id: string): Promise<void> => {
+        try {
+            await this.connection(this.FRIENDSHIP_TABLE)
+                .delete()
+                .where({ id })
+        }
+        catch (err: any) {
+            if (err instanceof Error) {
+                throw new Error(err.message)
+            } else {
+                throw new Error(err.sqlMessage)
+            }
+        }
+    }
 }
