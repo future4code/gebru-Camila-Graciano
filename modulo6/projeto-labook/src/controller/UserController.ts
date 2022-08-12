@@ -22,7 +22,7 @@ export class UserController implements InterfaceUserController {
 
             res.status(201).send({ token, message: "Usuário criado com sucesso!" })
         }
-        catch (error) {
+        catch (error:any) {
             if (error instanceof CustomError) {
                 return res.status(error.statusCode).send(error.message)
             }

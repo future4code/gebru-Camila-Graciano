@@ -5,7 +5,7 @@ POST http://localhost:3003/signup
 Content-Type: application/json
 
 {
-"name": "astrodev", "email": "astrodev@email.com", "password": "123456"
+"name": "teste1", "email": "teste1@email.com", "password": "123456"
 }
 
 ###
@@ -17,7 +17,36 @@ POST http://localhost:3003/login
 Content-Type: application/json
 
 {
-"email": "astrodev@email.com", "password": "123456"
+"email": "teste1@email.com", "password": "123456"
 }
 
 ###
+
+# Fazer amizade: 
+# Recebe token de autorização e id do usuário que será adicionado à lista de amigos 
+# Devolve mensagem de sucesso 
+POST http://localhost:3003/add/95809bc9-28b5-4c75-95de-17d882e203c7 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUtNDc4ZS04MzRlLWQ0OGNhNmQ0ODk3MiIsImlhdCI6MTY2MDI2MzgwNywiZXhwIjoxNjYwMzUwMjA3fQ.B5YZ4pVcAkIlwBE3F8JJ2gfMsyyP6K2a_oM6AxZ7xj0
+
+###
+# Desfazer amizade: 
+# Recebe token de autorização e id do usuário que será removido da lista de amigos 
+# Devolve mensagem de sucesso 
+DELETE http://localhost:3003/unfriend/95809bc9-28b5-4c75-95de-17d882e203c7
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUtNDc4ZS04MzRlLWQ0OGNhNmQ0ODk3MiIsImlhdCI6MTY2MDI2MzgwNywiZXhwIjoxNjYwMzUwMjA3fQ.B5YZ4pVcAkIlwBE3F8JJ2gfMsyyP6K2a_oM6AxZ7xj0
+
+###
+
+# Ver o feed com paginação de 5 posts por página:
+# Recebe token de autorização e tem opção de receber o número da página do feed 
+# Devolve informações dos posts dos amigos do usuário 
+GET http://localhost:3003/feed?page=2 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUtNDc4ZS04MzRlLWQ0OGNhNmQ0ODk3MiIsImlhdCI6MTY2MDI2MzgwNywiZXhwIjoxNjYwMzUwMjA3fQ.B5YZ4pVcAkIlwBE3F8JJ2gfMsyyP6K2a_oM6AxZ7xj0
+
+###
+
+# Ver apenas um tipo de post do feed: 
+# Recebe token de autorização e o tipo de post 
+# Devolve informações de todos os posts com o tipo passado 
+GET http://localhost:3003/feed/normal 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUtNDc4ZS04MzRlLWQ0OGNhNmQ0ODk3MiIsImlhdCI6MTY2MDI2MzgwNywiZXhwIjoxNjYwMzUwMjA3fQ.B5YZ4pVcAkIlwBE3F8JJ2gfMsyyP6K2a_oM6AxZ7xj0
