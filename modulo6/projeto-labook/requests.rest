@@ -27,6 +27,7 @@ Content-Type: application/json
 # Devolve mensagem de sucesso 
 POST http://localhost:3003/add/95809bc9-28b5-4c75-95de-17d882e203c7 
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUtNDc4ZS04MzRlLWQ0OGNhNmQ0ODk3MiIsImlhdCI6MTY2MDI2MzgwNywiZXhwIjoxNjYwMzUwMjA3fQ.B5YZ4pVcAkIlwBE3F8JJ2gfMsyyP6K2a_oM6AxZ7xj0
+Content-Type: application/json
 
 ###
 # Desfazer amizade: 
@@ -34,6 +35,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUt
 # Devolve mensagem de sucesso 
 DELETE http://localhost:3003/unfriend/95809bc9-28b5-4c75-95de-17d882e203c7
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUtNDc4ZS04MzRlLWQ0OGNhNmQ0ODk3MiIsImlhdCI6MTY2MDI2MzgwNywiZXhwIjoxNjYwMzUwMjA3fQ.B5YZ4pVcAkIlwBE3F8JJ2gfMsyyP6K2a_oM6AxZ7xj0
+Content-Type: application/json
 
 ###
 
@@ -42,6 +44,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUt
 # Devolve informações dos posts dos amigos do usuário 
 GET http://localhost:3003/feed?page=2 
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUtNDc4ZS04MzRlLWQ0OGNhNmQ0ODk3MiIsImlhdCI6MTY2MDI2MzgwNywiZXhwIjoxNjYwMzUwMjA3fQ.B5YZ4pVcAkIlwBE3F8JJ2gfMsyyP6K2a_oM6AxZ7xj0
+Content-Type: application/json
 
 ###
 
@@ -50,3 +53,60 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUt
 # Devolve informações de todos os posts com o tipo passado 
 GET http://localhost:3003/feed/normal 
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUtNDc4ZS04MzRlLWQ0OGNhNmQ0ODk3MiIsImlhdCI6MTY2MDI2MzgwNywiZXhwIjoxNjYwMzUwMjA3fQ.B5YZ4pVcAkIlwBE3F8JJ2gfMsyyP6K2a_oM6AxZ7xj0
+Content-Type: application/json
+
+###
+
+# Buscar um post por id: 
+# Recebe token de autorização e id do post 
+# Devolve id do post, foto, descrição, data de criação e tipo 
+GET http://localhost:3003/post/0ce7301a-b8b6-4945-891e-bb7120f4bef5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUtNDc4ZS04MzRlLWQ0OGNhNmQ0ODk3MiIsImlhdCI6MTY2MDI2MzgwNywiZXhwIjoxNjYwMzUwMjA3fQ.B5YZ4pVcAkIlwBE3F8JJ2gfMsyyP6K2a_oM6AxZ7xj0
+Content-Type: application/json
+
+###
+
+# Criar post: 
+# Recebe token de autorização, foto, descrição e tipo 
+# Devolve mensagem de sucesso 
+POST http://localhost:3003/post 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUtNDc4ZS04MzRlLWQ0OGNhNmQ0ODk3MiIsImlhdCI6MTY2MDI2MzgwNywiZXhwIjoxNjYwMzUwMjA3fQ.B5YZ4pVcAkIlwBE3F8JJ2gfMsyyP6K2a_oM6AxZ7xj0
+Content-Type: application/json
+
+{
+"photo": "urlDaFoto", "description": "Foto do meu cachorro!", "type": "Normal"
+}
+
+###
+
+# Comentar no post: 
+# Recebe token de autorização, id do post e comentário 
+# Devolve mensagem de sucesso 
+
+POST http://localhost:3003/comment/0ce7301a-b8b6-4945-891e-bb7120f4bef5 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUtNDc4ZS04MzRlLWQ0OGNhNmQ0ODk3MiIsImlhdCI6MTY2MDI2MzgwNywiZXhwIjoxNjYwMzUwMjA3fQ.B5YZ4pVcAkIlwBE3F8JJ2gfMsyyP6K2a_oM6AxZ7xj0
+Content-Type: application/json
+
+{
+"comment": "Que lindo!"
+}
+
+###
+
+# Curtir post: 
+# Recebe token de autorização e id do post 
+# Devolve mensagem de sucesso
+POST http://localhost:3003/post/0ce7301a-b8b6-4945-891e-bb7120f4bef5 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUtNDc4ZS04MzRlLWQ0OGNhNmQ0ODk3MiIsImlhdCI6MTY2MDI2MzgwNywiZXhwIjoxNjYwMzUwMjA3fQ.B5YZ4pVcAkIlwBE3F8JJ2gfMsyyP6K2a_oM6AxZ7xj0
+Content-Type: application/json
+
+###
+
+# Descurtir post: 
+# Recebe token de autorização e id do post 
+# Devolve mensagem de sucesso 
+PUT http://localhost:3003/post/0ce7301a-b8b6-4945-891e-bb7120f4bef5 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyZDY1M2YwLTVhNWUtNDc4ZS04MzRlLWQ0OGNhNmQ0ODk3MiIsImlhdCI6MTY2MDI2MzgwNywiZXhwIjoxNjYwMzUwMjA3fQ.B5YZ4pVcAkIlwBE3F8JJ2gfMsyyP6K2a_oM6AxZ7xj0
+Content-Type: application/json
+
+###
