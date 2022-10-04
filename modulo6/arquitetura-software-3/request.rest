@@ -1,0 +1,23 @@
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "name": "teste",
+    "email": "teste@gebru.com",
+    "password": "12345678"
+}
+
+####
+GET http://localhost:3003/user/all
+
+
+####
+POST http://localhost:3003/movie/create
+Content-Type: application/json
+
+{
+    "title": "Harry Potter e o prisioneiro de Azkaban",
+    "description": "Suspense",
+    "durationInMinutes": 300,
+    "yearOfRelease": 2004
+}
