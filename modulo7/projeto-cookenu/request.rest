@@ -1,0 +1,131 @@
+ Pegar feed de receitas: 
+ # Recebe token de autorização 
+ # Devolve informações das receitas dos usuários que o usuário está seguindo
+
+GET http://localhost:3003/user/feed 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzOGNkNjFlLTcwZGItNGU5ZC1hNTViLTA2MTIxYTc2NjA4ZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MTgyMzg3NSwiZXhwIjoxNjYxOTEwMjc1fQ.jUXMmLyzINJTJuS6vhnYKnO0Q9uby8ADCO5RgiTBdCg
+
+###
+
+# Pegar próprio perfil: 
+# Recebe token de autorização # Devolve id, nome e email do usuário
+
+GET http://localhost:3003/user/profile 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzOGNkNjFlLTcwZGItNGU5ZC1hNTViLTA2MTIxYTc2NjA4ZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MTgyMzg3NSwiZXhwIjoxNjYxOTEwMjc1fQ.jUXMmLyzINJTJuS6vhnYKnO0Q9uby8ADCO5RgiTBdCg
+
+###
+
+# Pegar perfil de outro usuário: 
+# Recebe token de autorização e id do usuário cujo perfil se desejar pegar 
+# Devolve id, nome e email deste usuário
+
+GET http://localhost:3003/user/838cd61e-70db-4e9d-a55b-06121a76608f
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzOGNkNjFlLTcwZGItNGU5ZC1hNTViLTA2MTIxYTc2NjA4ZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MTgyMzg3NSwiZXhwIjoxNjYxOTEwMjc1fQ.jUXMmLyzINJTJuS6vhnYKnO0Q9uby8ADCO5RgiTBdCg
+
+###
+
+# Seguir usuário: 
+# Recebe token de autorização e id do usuário que se deseja seguir # Devolve mensagem de sucesso
+
+POST http://localhost:3003/user/follow 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzOGNkNjFlLTcwZGItNGU5ZC1hNTViLTA2MTIxYTc2NjA4ZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MTgyMzg3NSwiZXhwIjoxNjYxOTEwMjc1fQ.jUXMmLyzINJTJuS6vhnYKnO0Q9uby8ADCO5RgiTBdCg
+Content-Type: application/json
+
+{
+"userToFollowId": "c3098afa-61d9-4af3-97a0-470415aae5c0"
+}
+
+###
+
+# Deixar de seguir usuário: # Recebe token de autorização e id do usuário que se deseja deixar de seguir # Devolve mensagem de sucesso
+
+POST http://localhost:3003/user/unfollow 
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzOGNkNjFlLTcwZGItNGU5ZC1hNTViLTA2MTIxYTc2NjA4ZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MTgyMzg3NSwiZXhwIjoxNjYxOTEwMjc1fQ.jUXMmLyzINJTJuS6vhnYKnO0Q9uby8ADCO5RgiTBdCg
+Content-Type: application/json
+
+{
+"userToFollowId": "452ca8b9-bcee-4f06-b577-933ab16713dc"
+}
+
+###
+
+# Login: # Recebe email e senha 
+# Devolve token de autorização
+
+POST http://localhost:3003/login 
+Content-Type: application/json
+
+{
+"email": "astrodev@email.com", "password": "123456"
+}
+
+###
+
+# Cadastro de usuário: 
+# Recebe nome, email, senha e tipo de usuário # Devolve token de autorização
+
+POST http://localhost:3003/signup 
+Content-Type: application/json
+
+{
+"name": "Astrodev", "email": "astrodev@email.com", "password": "123456", "role": "admin"
+}
+
+###
+
+# Alterar senha do usuário: 
+# Recebe email e senha nova # Devolve mensagem de sucesso e envia um e-mail para o usuário
+
+PUT http://localhost:3003/user/edit/password 
+Content-Type: application/json
+
+{
+"email": "astrodev@email.com", "newPassword": "123456789"
+}
+
+###
+
+# Deletar conta: # Recebe token de autorização e id do usuário 
+# Devolve mensagem de sucesso
+
+DELETE http://localhost:3003/user/delete/90e505e0-cbc6-4db8-be17-ede97daca7bb 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzOGNkNjFlLTcwZGItNGU5ZC1hNTViLTA2MTIxYTc2NjA4ZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MTgyMzg3NSwiZXhwIjoxNjYxOTEwMjc1fQ.jUXMmLyzINJTJuS6vhnYKnO0Q9uby8ADCO5RgiTBdCg
+
+###
+
+# Pegar receita: 
+# Recebe token de autorização e id da receita # Devolve id, título, descrição e data de criação da receita 
+GET http://localhost:3003/recipe/cb127a3e-3948-41e4-9693-f6c6b3e0dd99 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzOGNkNjFlLTcwZGItNGU5ZC1hNTViLTA2MTIxYTc2NjA4ZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MTgyMzg3NSwiZXhwIjoxNjYxOTEwMjc1fQ.jUXMmLyzINJTJuS6vhnYKnO0Q9uby8ADCO5RgiTBdCg
+
+###
+
+# Criar receita: 
+# Recebe token de autorização, o título e a descrição da receita # Devolve mensagem de sucesso 
+POST http://localhost:3003/recipe 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzOGNkNjFlLTcwZGItNGU5ZC1hNTViLTA2MTIxYTc2NjA4ZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MTgyMzg3NSwiZXhwIjoxNjYxOTEwMjc1fQ.jUXMmLyzINJTJuS6vhnYKnO0Q9uby8ADCO5RgiTBdCg
+Content-Type: application/json
+
+{
+"title": "Tiramisu", "description": "Descrição da receita"
+}
+
+###
+
+# Editar receita: 
+# Recebe token de autorização, o título novo e a descrição nova da receita # Devolve mensagem de sucesso 
+PUT http://localhost:3003/recipe/edit/cb127a3e-3948-41e4-9693-f6c6b3e0dd99 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzOGNkNjFlLTcwZGItNGU5ZC1hNTViLTA2MTIxYTc2NjA4ZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MTgyMzg3NSwiZXhwIjoxNjYxOTEwMjc1fQ.jUXMmLyzINJTJuS6vhnYKnO0Q9uby8ADCO5RgiTBdCg
+Content-Type: application/json
+
+{
+"title": "Brownie com Nozes", "description": "Modo de preparo"
+}
+
+###
+
+# Deletar receita: 
+# Recebe token de autorização e id da receita 
+# Devolve mensagem de sucesso 
+DELETE http://localhost:3003/recipe/delete/8fabbd19-65c9-4b80-b7ff-f36c3dfe8511 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzOGNkNjFlLTcwZGItNGU5ZC1hNTViLTA2MTIxYTc2NjA4ZiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MTgyMzg3NSwiZXhwIjoxNjYxOTEwMjc1fQ.jUXMmLyzINJTJuS6vhnYKnO0Q9uby8ADCO5RgiTBdCg
