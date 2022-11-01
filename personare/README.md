@@ -8,4 +8,4 @@ Apresentar a carta selecionada, o nome da carta e uma descrição. (a descriçã
 OBS: As imagens e nomes das cartas estão listadas no arquivo tarot.json, esse arquivo deve ser consumido via http request. A propriedade image de cada carta deve ser concatenada com a propriedade imagesUrl, para obter o endereço final da imagem. Utilize o valor da propriedade imageBackCard para obter a imagem do fundo da carta.
 
 *** Link do surge
-https://well-made-story.surge.sh/
+bashful-shake.surge.sh
