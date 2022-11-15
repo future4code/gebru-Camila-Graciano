@@ -27,7 +27,8 @@ Funcionalidades extra:
 
 ## 🔗Link Surge  
 
-[Promobit-Challenge](http://tmdb-challenge.surge.sh/)
+flashy-board.surge.sh
+)
 
 <h2> 💻Como Rodar o Projeto Localmente </h2>
 
@@ -59,12 +60,4 @@ Por padrão a aplicação rodará localmente na porta 3000.
   <img align="center" alt="Git" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg"> 
 </div>
 
-<h2 align="center"> 
- 👩🏻‍💻Desenvolvedora 
-</h2>
 
-<table align="center">
-  <tr>
-    </td> <td align="center"><a href="https://www.linkedin.com/in/mariandr4de/"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/104591781?v=4" width="100px;" alt=""/><br /><sub><b>Mariana Andrade</b></sub></a> 
-  </tr>
-</table>
